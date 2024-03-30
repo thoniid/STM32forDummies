@@ -20,7 +20,13 @@ int main(void)
   while (1)
   {
     buttonState = HAL_GPIO_ReadPin(button_GPIO_Port, button_Pin);
-    HAL_GPIO_WritePin(led_GPIO_Port, led_Pin, buttonState);
+
+    if(buttonState){
+      HAL_GPIO_WritePin(led_GPIO_Port, led_Pin, 1);
+    }else{
+      HAL_GPIO_WritePin(led_GPIO_Port, led_Pin, 0);
+    }  
+    //HAL_GPIO_WritePin(led_GPIO_Port, led_Pin, buttonState);
     HAL_Delay(10);
   }
 }
